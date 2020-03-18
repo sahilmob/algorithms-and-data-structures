@@ -102,6 +102,16 @@ class DoublyLinkedList {
     }
     return current;
   }
+
+  set(i, value) {
+    const node = this.get(i);
+
+    if (node) {
+      node.value = value;
+      return true;
+    }
+    return false;
+  }
 }
 
 const list = new DoublyLinkedList();
