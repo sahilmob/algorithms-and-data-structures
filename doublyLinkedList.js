@@ -1,56 +1,49 @@
-class Node{
-	
-	constructor(value){
-		this.value = value;
-		this.next = null;
-		this.prev = null;
-	}
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+    this.prev = null;
+  }
 }
 
+class DoublyLinkedList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
 
-class DoublyLinkedList{
+  push(value) {
+    const node = new Node(value);
 
-	constructor(){
-		this.head = null;
-		this.tail = null;
-		this.length = 0;
-	}
+    if (this.length === 0) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.tail.next = node;
+      node.prev = this.tail;
+      this.tail = node;
+    }
+    this.length++;
+    return this;
+  }
 
+  pop() {
+    if (this.length === 0) return undefined;
 
-	push(value){
-		const node = new Node(value);
-		
-		if(this.length === 0){
-			this.head = node;
-			this.tail = node;
-		}else{
-			this.tail.next = node;
-			node.prev = this.tail;
-			this.tail = node;
-		}
-		this.length++;
-		return this;
-	}
+    const removedNode = this.tail;
 
-	pop(){
-		if(this.length === 0) return undefined;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    }
 
-		const removedNode = this.tail;
+    this.tail = removedNode.prev;
+    this.tail.next = null;
 
-		if(this.length === 1) {
-			this.head = null;
-			this.tail = null;
-		}
+    removedNode.prev = null;
 
-		this.tail = removedNode.prev;
-		this.tail.next = null;
-		
-		removedNode.prev = null;
-
-		this.length--;
-		return removedNode;
-	}
-
-
-	
+    this.length--;
+    return removedNode;
+  }
 }
