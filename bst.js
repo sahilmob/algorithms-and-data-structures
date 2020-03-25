@@ -120,6 +120,18 @@ class BST {
     traverse(this.root);
     return values;
   }
+
+  dfsPostOrder() {
+    const values = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      values.push(node.value);
+    }
+
+    traverse(this.root);
+    return values;
+  }
 }
 
 const b = new BST();
@@ -132,4 +144,4 @@ b.insert(8);
 b.insert(20);
 
 // console.log(b.find(9));
-console.log(b.dfsPreOrder());
+console.log(b.dfsPostOrder());
