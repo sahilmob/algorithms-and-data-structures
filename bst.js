@@ -107,19 +107,29 @@ class BST {
     }
     return values;
   }
+
+  dfsPreOrder() {
+    const values = [];
+    function traverse(node) {
+      values.push(node.value);
+
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+    return values;
+  }
 }
 
 const b = new BST();
 
 b.insert(10);
-b.insert(11);
-b.insert(9);
-b.insert(19);
+b.insert(6);
+b.insert(15);
+b.insert(3);
 b.insert(8);
-b.insert(50);
-b.insert(30);
-b.insert(1);
-b.insert(2);
+b.insert(20);
 
 // console.log(b.find(9));
-console.log(b.bfs());
+console.log(b.dfsPreOrder());
