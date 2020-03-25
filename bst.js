@@ -92,6 +92,21 @@ class BST {
     if (!found) return undefined;
     return current;
   }
+
+  bfs() {
+    const q = [];
+    const values = [];
+
+    q.push(this.root);
+
+    while (q.length) {
+      const node = q.shift();
+      values.push(node.value);
+      if (node.left) q.push(node.left);
+      if (node.right) q.push(node.right);
+    }
+    return values;
+  }
 }
 
 const b = new BST();
@@ -101,5 +116,10 @@ b.insert(11);
 b.insert(9);
 b.insert(19);
 b.insert(8);
+b.insert(50);
+b.insert(30);
+b.insert(1);
+b.insert(2);
 
-console.log(b.find(9));
+// console.log(b.find(9));
+console.log(b.bfs());
