@@ -151,12 +151,7 @@ class DoublyLinkedList {
 
 const list = new DoublyLinkedList();
 
-list
-  .push(0)
-  .push(1)
-  .push(2)
-  .push(3)
-  .push(4);
+list.push(0).push(1).push(2).push(3).push(4);
 
 list.insert(4, 11);
 
